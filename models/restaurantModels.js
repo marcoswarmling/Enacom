@@ -12,5 +12,16 @@ const insertRestaurant = ({id, name, products}) => {
         });
 }
 
-module.exports = { insertRestaurant };
+const getRestaurant = (id) => {
+   const idInt = parseInt(id);
+    return connection()
+        .then(db => {
+            const collection = db.collection('restaurants');
+            return collection.findOne({
+                _id:idInt,
+            });
+        });
+}
+
+module.exports = { insertRestaurant, getRestaurant };
 

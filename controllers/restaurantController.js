@@ -1,4 +1,4 @@
-const foodModels = require("../models/foodModels");
+const foodModels = require("../models/restaurantModels");
 
 const createRestaurant = async (req, res) => {
 
@@ -9,20 +9,14 @@ const createRestaurant = async (req, res) => {
       {
         id: 1,
         productName: "Coxinha",
-        price: 10,
-        quantity: 10,
       },
       {
         id: 2,
         productName: "Pizza",
-        price: 20,
-        quantity: 10,
       },
       {
         id: 3,
         productName: "Refrigerante",
-        price: 5,
-        quantity: 10,
       },
     ],
   };
@@ -32,4 +26,11 @@ const createRestaurant = async (req, res) => {
   res.status(200).json({"enviado": "ok"});
 };
 
-module.exports = { createRestaurant };
+const getRestaurant = async (req, res) => {
+    const restaurant = await foodModels.getRestaurant(req.params.id);
+    res.status(200).json(restaurant.products);
+};
+
+
+
+module.exports = { createRestaurant, getRestaurant };
