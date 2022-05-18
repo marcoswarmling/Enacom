@@ -56,6 +56,7 @@ describe("Teste de endpoints", () => {
       .expect("jsonTypes", "*", {
         CardId: Joi.number(),
         RestaurantId: Joi.number(),
+        ProductId: Joi.number(),
         productName: Joi.string(),
         quantity: Joi.number(),
       });
