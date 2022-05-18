@@ -58,9 +58,11 @@ describe("Teste de endpoints", () => {
       .expect("jsonTypes", "*", {
         CardId: Joi.number(),
         RestaurantId: Joi.number(),
+        product: {
         ProductId: Joi.number(),
         productName: Joi.string(),
         quantity: Joi.number(),
+        }
       });
   });
 
@@ -74,37 +76,7 @@ describe("Teste de endpoints", () => {
       });
   });
 
-  it("4 - Remova um item da sacola", () => {
-    return frisby
-      .delete(`${url}/cart/?cartId=1&productId=1`)
-      .expect("status", 200)
-      .expect("header", "content-type", "application/json; charset=utf-8")
-      .expect("jsonTypes", {
-        delete: "sucessful",
-      });
-  });
-
-  it("4.1 - Caso o item a ser deletado não existir retorne erro", () => {
-    return frisby
-      .delete(`${url}/cart/?cartId=1&productId=100`)
-      .expect("status", 404)
-      .expect("header", "content-type", "application/json; charset=utf-8")
-      .expect("jsonTypes", {
-        error: "not found",
-      });
-  });
-
-  it("5 - Remova todos os itens da sacola", () => {
-    return frisby
-      .delete(`${url}/cart/1`)
-      .expect("status", 200)
-      .expect("header", "content-type", "application/json; charset=utf-8")
-      .expect("jsonTypes", {
-        delete: "sucessful",
-      });
-  });
-
-  it("6 - modifique a quantidade de um item na sacola", () => {
+  it("4 - modifique a quantidade de um item na sacola", () => {
     const body = {
       productId: 1,
       quantity: 5,
@@ -118,7 +90,7 @@ describe("Teste de endpoints", () => {
       });
   });
 
-  it("6.1 - Caso o item a ser modificado não existir retorne erro", () => {
+  it("4.1 - Caso o item a ser modificado não existir retorne erro", () => {
     const body = {
       productId: 100,
       quantity: 5,
@@ -131,4 +103,35 @@ describe("Teste de endpoints", () => {
         error: "not found",
       });
   });
+
+  it("5 - Remova um item da sacola", () => {
+    return frisby
+      .delete(`${url}/cart/?cartId=1&productId=1`)
+      .expect("status", 200)
+      .expect("header", "content-type", "application/json; charset=utf-8")
+      .expect("jsonTypes", {
+        delete: "sucessful",
+      });
+  });
+
+  it("5.1 - Caso o item a ser deletado não existir retorne erro", () => {
+    return frisby
+      .delete(`${url}/cart/?cartId=1&productId=100`)
+      .expect("status", 404)
+      .expect("header", "content-type", "application/json; charset=utf-8")
+      .expect("jsonTypes", {
+        error: "not found",
+      });
+  });
+
+  it("6 - Remova todos os itens da sacola", () => {
+    return frisby
+      .delete(`${url}/cart/1`)
+      .expect("status", 200)
+      .expect("header", "content-type", "application/json; charset=utf-8")
+      .expect("jsonTypes", {
+        delete: "sucessful",
+      });
+  });
+
 });
