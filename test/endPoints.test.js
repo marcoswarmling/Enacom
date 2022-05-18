@@ -1,5 +1,6 @@
 const frisby = require("frisby");
 const fs = require("fs");
+const Joi = frisby.Joi;
 
 const url = "http://localhost:3000";
 
@@ -10,8 +11,8 @@ describe("Teste de endpoints", () => {
       .expect("status", 200)
       .expect("header", "content-type", "application/json; charset=utf-8")
       .expect("jsonTypes", "*", {
-        id: "integer",
-        productName: "string",
+        id: Joi.number(),
+        productName: Joi.string(),
       });
   });
   it("2 - Insira items na sacola", () => {
@@ -47,9 +48,8 @@ describe("Teste de endpoints", () => {
       .expect("status", 200)
       .expect("header", "content-type", "application/json; charset=utf-8")
       .expect("jsonTypes", "*", {
-        id: "number",
-        productName: "string",
-        quantity: "number",
+        productName: Joi.string(),
+        quantity: Joi.number(),
       });
   });
 
