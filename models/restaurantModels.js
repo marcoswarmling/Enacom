@@ -23,5 +23,5 @@ const getRestaurant = (id) => {
         });
 }
 
-module.exports = { insertRestaurant, getRestaurant };
+module.exports = { insertRestaurant, getRestaurant};
 

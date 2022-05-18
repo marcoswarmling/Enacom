@@ -28,25 +28,25 @@ describe("Teste de endpoints", () => {
       .post(`${url}/cart`, body)
       .expect("status", 200)
       .expect("header", "content-type", "application/json; charset=utf-8")
-      .expect("jsonTypes", "*", {
+      .expect("jsonTypes", {
         create: "sucessful",
       });
   });
 
   it("2.1 - Caso o id não exista retorne error", () => {
     const body = {
-        cartId: 1,
-        restaurantId: 1,
-        products: {
-        productId: 2000,
-        quantity: 1,
-        }
+      cartId: 1,
+      restaurantId: 1,
+      products: {
+      productId: 1,
+      quantity: 1,
+      }
     };
     return frisby
       .post(`${url}/cart`, body)
       .expect("status", 404)
       .expect("header", "content-type", "application/json; charset=utf-8")
-      .expect("jsonTypes", "*", {
+      .expect("jsonTypes", {
         error: "not found",
       });
   });
@@ -79,7 +79,7 @@ describe("Teste de endpoints", () => {
       .delete(`${url}/cart/?cartId=1&productId=1`)
       .expect("status", 200)
       .expect("header", "content-type", "application/json; charset=utf-8")
-      .expect("jsonTypes", "*", {
+      .expect("jsonTypes", {
         delete: "sucessful",
       });
   });
@@ -89,7 +89,7 @@ describe("Teste de endpoints", () => {
       .delete(`${url}/cart/?cartId=1&productId=100`)
       .expect("status", 404)
       .expect("header", "content-type", "application/json; charset=utf-8")
-      .expect("jsonTypes", "*", {
+      .expect("jsonTypes", {
         error: "not found",
       });
   });
@@ -99,7 +99,7 @@ describe("Teste de endpoints", () => {
       .delete(`${url}/cart/1`)
       .expect("status", 200)
       .expect("header", "content-type", "application/json; charset=utf-8")
-      .expect("jsonTypes", "*", {
+      .expect("jsonTypes", {
         delete: "sucessful",
       });
   });
@@ -113,7 +113,7 @@ describe("Teste de endpoints", () => {
       .put(`${url}/cart`, body)
       .expect("status", 200)
       .expect("header", "content-type", "application/json; charset=utf-8")
-      .expect("jsonTypes", "*", {
+      .expect("jsonTypes", {
         update: "sucessful",
       });
   });
@@ -127,7 +127,7 @@ describe("Teste de endpoints", () => {
       .put(`${url}/cart`, body)
       .expect("status", 404)
       .expect("header", "content-type", "application/json; charset=utf-8")
-      .expect("jsonTypes", "*", {
+      .expect("jsonTypes", {
         error: "not found",
       });
   });
