@@ -17,8 +17,12 @@ describe("Teste de endpoints", () => {
   });
   it("2 - Insira items na sacola", () => {
     const body = {
+      cardId: 1,
+      restaurantId: 1,
+      products: {
       productId: 1,
       quantity: 1,
+      },
     };
     return frisby
       .post(`${url}/cart`, body)
@@ -31,6 +35,8 @@ describe("Teste de endpoints", () => {
 
   it("2.1 - Caso o id não exista retorne error", () => {
     const body = {
+      cardId: 1,
+      restaurantId: 1,
       productId: 100,
       quantity: 1,
     };
@@ -48,6 +54,8 @@ describe("Teste de endpoints", () => {
       .expect("status", 200)
       .expect("header", "content-type", "application/json; charset=utf-8")
       .expect("jsonTypes", "*", {
+        CardId: Joi.number(),
+        RestaurantId: Joi.number(),
         productName: Joi.string(),
         quantity: Joi.number(),
       });
