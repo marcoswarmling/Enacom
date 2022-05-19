@@ -1,6 +1,6 @@
 const foodModels = require("../models/restaurantModels");
 
-const createRestaurant = async (req, res) => {
+const createRestaurant = async (_req, res) => {
   const restaurant = {
     id: 1,
     name: "EnaFood",

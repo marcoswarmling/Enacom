@@ -1,5 +1,5 @@
 const { getAProductName } = require("../models/restaurantModels");
-const { getACartProduct, getCart } = require("../models/cartModels");
+const { getACartProduct} = require("../models/cartModels");
 
 const productNotExists = async (req, res, next) => {
   const { restaurantId, productId } = req.body;
