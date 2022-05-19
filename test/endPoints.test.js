@@ -60,14 +60,12 @@ describe("Teste de endpoints", () => {
       });
   });
 
-
   it("4 - modifique a quantidade de um item na sacola", () => {
     const body = {
-      productId: 1,
       quantity: 5,
     };
     return frisby
-      .put(`${url}/cart`, body)
+      .put(`${url}/cart/1/1`, body)
       .expect("status", 200)
       .expect("header", "content-type", "application/json; charset=utf-8")
       .expect("jsonTypes", {
@@ -77,11 +75,10 @@ describe("Teste de endpoints", () => {
 
   it("4.1 - Caso o item a ser modificado não existir retorne erro", () => {
     const body = {
-      productId: 100,
       quantity: 5,
     };
     return frisby
-      .put(`${url}/cart`, body)
+      .put(`${url}/cart/1/25`, body)
       .expect("status", 404)
       .expect("header", "content-type", "application/json; charset=utf-8")
       .expect("jsonTypes", {
@@ -101,7 +98,7 @@ describe("Teste de endpoints", () => {
 
   it("5.1 - Caso o item a ser deletado não existir retorne erro", () => {
     return frisby
-      .delete(`${url}/cart/?cartId=1&productId=100`)
+      .delete(`${url}/cart/1/25`)
       .expect("status", 404)
       .expect("header", "content-type", "application/json; charset=utf-8")
       .expect("jsonTypes", {
@@ -118,5 +115,4 @@ describe("Teste de endpoints", () => {
         delete: "sucessful",
       });
   });
-
 });

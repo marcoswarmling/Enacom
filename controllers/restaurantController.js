@@ -1,7 +1,6 @@
 const foodModels = require("../models/restaurantModels");
 
 const createRestaurant = async (req, res) => {
-
   const restaurant = {
     id: 1,
     name: "EnaFood",
@@ -23,15 +22,12 @@ const createRestaurant = async (req, res) => {
 
   await foodModels.insertRestaurant(restaurant);
 
-  res.status(200).json({"enviado": "ok"});
+  res.status(200).json({ enviado: "ok" });
 };
 
 const getRestaurant = async (req, res) => {
-    const restaurant = await foodModels.getRestaurant(req.params.id);
-    res.status(200).json(restaurant.products);
+  const restaurant = await foodModels.getRestaurant(req.params.id);
+  res.status(200).json(restaurant.products);
 };
-
-
-
 
 module.exports = { createRestaurant, getRestaurant };

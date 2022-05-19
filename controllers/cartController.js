@@ -21,9 +21,19 @@ const getCart = async (req, res) => {
   res.status(200).json(cart);
 };
 
+const modifyACartProduct = async (req, res) => {
+  await cartModels.modifyACartProduct(
+    req.params.cartId,
+    req.params.productId,
+    req.body.quantity
+  );
+  res.status(200).json({ update: "sucessful" });
+};
+
 module.exports = {
   insertInCart,
   removeProductInACart,
   removeAllProductsInACart,
   getCart,
+  modifyACartProduct,
 };

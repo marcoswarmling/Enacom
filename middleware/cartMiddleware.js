@@ -1,5 +1,5 @@
 const { getAProductName } = require("../models/restaurantModels");
-const { getACartProduct } = require("../models/cartModels");
+const { getACartProduct, getCart } = require("../models/cartModels");
 
 const productNotExists = async (req, res, next) => {
   const { restaurantId, productId } = req.body;
@@ -31,7 +31,23 @@ const productAlreadyExists = async (req, res, next) => {
     });
 };
 
+const productToUpdateOrRemoveNotExists = async (req, res, next) => {
+  const { cartId, productId } = req.params;
+  getACartProduct(cartId, productId)
+    .then((product) => {
+      if (!product) {
+        res.status(404).json({ error: "not found" });
+      } else {
+        next();
+      }
+    })
+    .catch((err) => {
+      res.status(500).send(err);
+    });
+};
+
 module.exports = {
   productNotExists,
   productAlreadyExists,
+  productToUpdateOrRemoveNotExists,
 };
