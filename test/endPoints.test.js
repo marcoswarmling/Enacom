@@ -19,10 +19,8 @@ describe("Teste de endpoints", () => {
     const body = {
       cartId: 1,
       restaurantId: 1,
-      products: {
       productId: 1,
       quantity: 1,
-      },
     };
     return frisby
       .post(`${url}/cart`, body)
@@ -37,10 +35,8 @@ describe("Teste de endpoints", () => {
     const body = {
       cartId: 1,
       restaurantId: 1,
-      products: {
-      productId: 1,
+      productId: 1000,
       quantity: 1,
-      }
     };
     return frisby
       .post(`${url}/cart`, body)
@@ -106,7 +102,7 @@ describe("Teste de endpoints", () => {
 
   it("5 - Remova um item da sacola", () => {
     return frisby
-      .delete(`${url}/cart/?cartId=1&productId=1`)
+      .delete(`${url}/cart/1/1`)
       .expect("status", 200)
       .expect("header", "content-type", "application/json; charset=utf-8")
       .expect("jsonTypes", {
