@@ -23,5 +23,29 @@ const getRestaurant = (id) => {
         });
 }
 
-module.exports = { insertRestaurant, getRestaurant};
+const getAProductName = (RestaurantId, ProductId) => {
+    const RestaurantIdInt = parseInt(RestaurantId);
+    const ProductIdInt = parseInt(ProductId);
+    return connection()
+        .then(db => {
+            const collection = db.collection('restaurants');
+            return collection.findOne({
+                _id:RestaurantIdInt,
+                products: {
+                    $elemMatch: {
+                        id:ProductIdInt,
+                    }
+                }
+            },{
+                projection:{
+                    _id:0,
+                    products:{"productName.$":1},
+                    
+                }
+            });
+        });
+}
+
+
+module.exports = { insertRestaurant, getRestaurant, getAProductName};
 

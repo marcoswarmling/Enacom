@@ -54,23 +54,12 @@ describe("Teste de endpoints", () => {
       .expect("jsonTypes", "*", {
         CardId: Joi.number(),
         RestaurantId: Joi.number(),
-        product: {
         ProductId: Joi.number(),
         productName: Joi.string(),
         quantity: Joi.number(),
-        }
       });
   });
 
-  it("3.1 - Obtenha a sacola de um usuário que não existe", () => {
-    return frisby
-      .get(`${url}/cart/100`)
-      .expect("status", 404)
-      .expect("header", "content-type", "application/json; charset=utf-8")
-      .expect("jsonTypes", "*", {
-        error: "not found",
-      });
-  });
 
   it("4 - modifique a quantidade de um item na sacola", () => {
     const body = {

@@ -16,8 +16,14 @@ const removeAllProductsInACart = async (req, res) => {
   res.status(200).json({ delete: "sucessful" });
 };
 
+const getCart = async (req, res) => {
+  const cart = await cartModels.getCart(req.params.cartId);
+  res.status(200).json(cart);
+};
+
 module.exports = {
   insertInCart,
   removeProductInACart,
   removeAllProductsInACart,
+  getCart,
 };
