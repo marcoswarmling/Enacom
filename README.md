@@ -38,17 +38,29 @@ npm start
 
 Apesar de no desafio não ser pedido a criação do documento do restaurante, eu decidi colocar para facilitar ao testar, e rodar localmente o projeto. Essa rota insere altomaticamente um restaurante. Fiz o documento pensando que vai aver varios restaurantes ja que é baseado no Ifood.
 
+</br>
+</br>
+</br>
+
 ```
 **GET** products/:id
 ```
 
 Pega todos os itens contidos no restaurante cujo o id é igual a o que foi passado .
 
+</br>
+</br>
+</br>
+
 ```
 **GET** cart/:id
 ```
 
 Pega todos os itens contidos na sacola cujo o id é igual a o que foi passado.
+
+</br>
+</br>
+</br>
 
 ```
 **POST** cart/
@@ -67,17 +79,28 @@ Exemplo do formato do JSON aceito pela rota:
 
 insere na sacola um produto passando tambem o Id do restaurante para facilitar assim o consumo da api e tambem poder adicionar o nome do produto no documento.
 
+</br>
+</br>
+</br>
+
 ```
 **DELETE** /cart/:cartId/:prouctId
 ```
 
 Remove um item especifico de uma sacola especifica.
 
+</br>
+</br>
+</br>
+
 ```
 **DELETE** /cart/:cartId
 ```
 
 Remove uma sacola e todos os itens contidos nela.
+</br>
+</br>
+</br>
 
 ```
 **PUT** /cart/:cartId/:productId
