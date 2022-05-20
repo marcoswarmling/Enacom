@@ -6,7 +6,6 @@ const insertInCart = async (req, res) => {
 };
 
 const removeProductInACart = async (req, res) => {
-  console.log(req.params.cartId, req.params.productId);
   await cartModels.removeACartProduct(req.params.cartId, req.params.productId);
   res.status(200).json({ delete: "sucessful" });
 };

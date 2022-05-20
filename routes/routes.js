@@ -16,7 +16,7 @@ router.post(
 );
 
 router.delete(
-  "/cart/:cartId/:productId",
+  "/cart/:cartId/:prouctId",
   cartMiddleware.productToUpdateOrRemoveNotExists,
   cartController.removeProductInACart
 );
