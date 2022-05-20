@@ -4,7 +4,7 @@
 
 ### Como rodar o projeto localmente
 
-para rodar o projeto localmente é necessario os seguintes aplicativos instalados na sua maquina:
+para rodar o projeto localmente é necessario os seguintes programas instalados na sua maquina:
 
 **MongoDB**
 
@@ -82,6 +82,7 @@ Remove uma sacola e todos os itens contidos nela.
 ```
 **PUT** /cart/:cartId/:productId
 ```
+
 Exemplo do formato do JSON aceito pela rota:
 
 ```
@@ -89,8 +90,9 @@ Exemplo do formato do JSON aceito pela rota:
     quantity:21
 }
 ```
+
 altera a quantidade de um determinado item contido em uma determinada sacola.
 
-###### Outras observações 
-Durante a programação decidi usar a organização dos arquivos no padrão MVC porem sem o view. Alem disso opitei por fazer as validações por meio de middlewares, por acreditar que fica mais organizado desse geito.
+###### Outras observações
 
+Durante a programação decidi usar a organização dos arquivos no padrão MVC porem sem o view. Alem disso opitei por fazer as validações por meio de middlewares, por acreditar que fica mais organizado deste geito.
